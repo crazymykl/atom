@@ -242,6 +242,9 @@ uploadAssets = (release, buildDir, assets, callback) ->
     console.log 'secret: ', s3Secret, JSON.stringify(s3Secret)
     console.log 'bucket: ', s3Bucket, JSON.stringify(s3Bucket)
 
+
+    console.log JSON.stringify(process.env, null, 2)
+
     unless s3Key and s3Secret and s3Bucket
       callback(new Error('BUILD_ATOM_RELEASES_S3_KEY, BUILD_ATOM_RELEASES_S3_SECRET, and BUILD_ATOM_RELEASES_S3_BUCKET environment variables must be set.'))
       return
