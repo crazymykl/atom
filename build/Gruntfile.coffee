@@ -278,7 +278,12 @@ module.exports = (grunt) ->
   grunt.registerTask('lint', ['standard', 'coffeelint', 'csslint', 'lesslint'])
   grunt.registerTask('test', ['shell:kill-atom', 'run-specs'])
 
+
+  grunt.registerTask 'log-environment', 'Log the environment', ->
+    console.log JSON.stringify(process.env, null, 2)
+
   ciTasks = []
+  ciTasks.push('log-environment')
   ciTasks.push('output-disk-space') unless process.env.CI
   ciTasks.push('download-electron')
   ciTasks.push('download-electron-chromedriver')
